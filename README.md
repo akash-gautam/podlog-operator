@@ -28,7 +28,7 @@ Once the podlog operator is deployed we can verify its working by deploying new 
 {"level":"info","ts":1550140803.2885888,"logger":"controller_pod","msg":"log dump info","namespace":"gateway","pod":"nginx-57867cc648-vz4q8","container":"nginx","s3bucketlocation":"podlogdumpbucket/gateway/nginx-57867cc648-vz4q8/nginx.log"}
 {"level":"info","ts":1550140803.288894,"logger":"controller_pod","msg":"pod deleted","namespace":"gateway","name":"nginx-57867cc648-vz4q8"} 
 ```
-9. Verify on the AWS coonsole that the s3 bucket has log file in the format <namespace>/pod-name/container-name.log
+9. Verify on the AWS console that the s3 bucket has log file in the format <namespace>/pod-name/container-name.log
 
 ## Steps to build the podlog conatiner
 If you have made changes to the code then you can follow the following steps to build the image
