@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podlog-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: podlog-operator
+  template:
+    metadata:
+      labels:
+        name: podlog-operator
+    spec:
+      serviceAccountName: podlog-operator
+      containers:
+        - name: podlog-operator
+          # Replace this with the built image name
+          image: akash125/podlog-operator:0.0.1
+          command:
+          - podlog-operator
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              value: ""
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: OPERATOR_NAME
+              value: "podlog-operator"
+            - name: LOG_DUMP_BUCKET
+              value: podlogdumpbucket
+            - name: AWS_REGION_NAME
+              value: "us-east-1"
